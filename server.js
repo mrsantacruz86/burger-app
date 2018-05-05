@@ -1,29 +1,33 @@
-// ============================================================================
-// DEPENDENCIES
-// ============================================================================
-const express = require("express");
-const bodyParser = require("body-parser");
- 
-// ============================================================================
-// EXPRESS CONFIGURATION
-// ============================================================================
-const app = express();
-// Sets an initial port. We"ll use this later in our listener
+var express = require("express");
+var bodyParser = require("body-parser");
+
 var PORT = process.env.PORT || 8080;
 
-// Sets up the Express app to handle data parsing
+var app = express();
+
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse application/json
 app.use(bodyParser.json());
 
-// ============================================================================
-// ROUTER
-// ============================================================================
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
-// ============================================================================
-// LISTENER (This code "starts" our server)
-// ============================================================================
-app.listen(PORT, function() {
-  console.log(`App listening on: localhost:${PORT}/`);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/burger_controller");
+
+app.use(routes);
+
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function () {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
+
