@@ -24,9 +24,9 @@ function objToSql(ob) {
 // Object for all our SQL statement functions.
 var orm = {
 	all: function (tableInput, cb) {
-		// var queryString = "SELECT * FROM ?";
-		var queryString = "SELECT * FROM burgers";
-		connection.query(queryString, function (err, result) {
+		var queryString = `SELECT * FROM ${tableInput}`;
+		// var queryString = "SELECT * FROM burgers";
+		connection.query(queryString,function (err, result) {
 			if (err) {
 				throw err;
 			}
@@ -34,12 +34,10 @@ var orm = {
 		});
 	},
 	create: function (table, cols, vals, cb) {
-		var queryString = `INSERT INTO ? (${cols.toString()})
+		var queryString = `INSERT INTO ${table} (${cols.toString()})
 		VALUES(${printQuestionMarks(vals.length)})`;
-
 		console.log(queryString);
-
-		connection.query(queryString, [table, vals], function (err, result) {
+		connection.query(queryString, [vals], function (err, result) {
 			if (err) {
 				throw err;
 			}
@@ -63,7 +61,7 @@ var orm = {
 	delete: function (table, condition, cb) {
 		var queryString = `DELETE FROM ${table} WHERE ?`;
 
-		connection.query(queryString, condition, function (err, result) {
+		connection.query(queryString, [condition], function (err, result) {
 			if (err) {
 				throw err;
 			}
