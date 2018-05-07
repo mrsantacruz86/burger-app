@@ -1,7 +1,7 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
 	$(".change-state").on("click", function (event) {
-		var id = $(this).data("id");
+		var id = $(this).data("data-id");
 		var devoured = $(this).data("devoured");
 
 		var newDevouredState = {
@@ -42,7 +42,7 @@ $(function () {
 		);
 	});
 
-	$(".delete-cat").on("click", function (event) {
+	$(".delete-burger").on("click", function (event) {
 		var id = $(this).data("id");
 
 		// Send the DELETE request.
@@ -56,4 +56,5 @@ $(function () {
 			}
 		);
 	});
+	
 });

@@ -6,7 +6,7 @@
 				<h3 class="panel-title">Burgers that are not Devoured!</h3>
 			</div>
 			<div class="panel-body">
-				<ul>
+				<ul class="list-group">
 					{{#each burgers}}
 						{{#unless devoured}}
 							{{> burgers/burger-list devoured=false}}
@@ -23,7 +23,7 @@
 				<h3 class="panel-title">Burgers that are not Devoured!</h3>
 			</div>
 			<div class="panel-body">
-				<ul>
+				<ul class="list-group">
 					{{#each burgers}}
 						{{#if devoured}}
 							{{> burgers/burger-list devoured=true}}
