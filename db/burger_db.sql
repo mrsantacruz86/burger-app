@@ -14,4 +14,3 @@ INSERT INTO burgers (burger_name, devoured)
   ('Chicken', FALSE ),
   ('Big Mac', TRUE );
   
-SELECT * FROM burgers;

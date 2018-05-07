@@ -3,7 +3,7 @@ const connection = require('./connection');
 // Print questionmarks in the quert string
 function printQuestionMarks(num) {
 	var arr = [];
-	for (var i = 0; i < num; i++) {arr.push("?")}
+	for (var i = 0; i < num; i++) { arr.push("?") }
 	return arr.toString();
 }
 
@@ -26,7 +26,7 @@ var orm = {
 	all: function (tableInput, cb) {
 		var queryString = `SELECT * FROM ${tableInput}`;
 		// var queryString = "SELECT * FROM burgers";
-		connection.query(queryString,function (err, result) {
+		connection.query(queryString, function (err, result) {
 			if (err) {
 				throw err;
 			}
@@ -34,8 +34,7 @@ var orm = {
 		});
 	},
 	create: function (table, cols, vals, cb) {
-		var queryString = `INSERT INTO ${table} (${cols.toString()})
-		VALUES(${printQuestionMarks(vals.length)})`;
+		var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES(${printQuestionMarks(vals.length)})`;
 		console.log(queryString);
 		connection.query(queryString, [vals], function (err, result) {
 			if (err) {
@@ -57,9 +56,10 @@ var orm = {
 			cb(result);
 		});
 	},
+	// Delete method
 	delete: function (table, condition, cb) {
 		var queryString = `DELETE FROM ${table} WHERE ?`;
-
+		console.log(queryString);
 		connection.query(queryString, [condition], function (err, result) {
 			if (err) {
 				throw err;
@@ -68,5 +68,5 @@ var orm = {
 		});
 	}
 };
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;
