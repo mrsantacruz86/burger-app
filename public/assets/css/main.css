@@ -6,3 +6,7 @@ li > button{
   float: right;
   margin-left: 3px;
 }
+li > img{
+  margin-right: 5px;
+  height: 16px;
+}

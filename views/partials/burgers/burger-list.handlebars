@@ -1,8 +1,8 @@
 <li class="list-group-item">
-	<img src="assets/img/burger-icon.svg" width="18px" alt="Hamburger Icon"> {{burger_name}}
+	<img src="assets/img/burger-icon.svg" alt="Hamburger Icon"> {{burger_name}}
 
 	{{#unless devoured}}
-		<button ctype="button" class="btn btn-xs btn-primary change-state" data-id="{{id}}" devoured="{{devoured}}">DEVOUR!</button>
+		<button ctype="button" class="btn btn-xs btn-primary devour-burger" data-id="{{id}}" devoured="{{devoured}}">DEVOUR!</button>
 	{{/unless}}
 	{{#if devoured}}
 		<button class="btn btn-xs btn-danger delete-burger" data-id="{{this.id}}">DELETE!</button>

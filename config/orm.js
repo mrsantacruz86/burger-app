@@ -47,11 +47,10 @@ var orm = {
 
 	// An example of objColVals would be {name: panther, sleepy: true}
 	update: function (table, objColVals, condition, cb) {
-		var queryString = `UPDATE ${table} 
-		SET ${objToSql(objColVals)}	WHERE ${condition}`;
+		var queryString = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ?`;
 
 		console.log(queryString);
-		connection.query(queryString, function (err, result) {
+		connection.query(queryString, condition, function (err, result) {
 			if (err) {
 				throw err;
 			}

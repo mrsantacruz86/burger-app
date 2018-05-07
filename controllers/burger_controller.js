@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
 		var burgerData = {
 			burgers: data
 		};
-		console.log(burgerData);
+		// console.log(burgerData);
 		res.render("index", burgerData);
 	});
 });
@@ -21,7 +21,7 @@ router.get("/", function (req, res) {
 // Create method
 router.post("/api/burgers", function (req, res) {
 	burger.create(["burger_name"], [req.body.name], function (result) {
-			// Send back the ID of the new quote
+			// Send back the ID of the new burger
 			console.log(req.body);
 			res.json({ id: result.insertId });
 		});
@@ -29,7 +29,7 @@ router.post("/api/burgers", function (req, res) {
 
 // Uptade some feature
 router.put("/api/burgers/:id", function (req, res) {
-	var condition = "id = " + req.params.id;
+	var condition = {"id": req.params.id};
 	// console.log("condition", condition);
 	burger.update({
 		devoured: req.body.devoured
