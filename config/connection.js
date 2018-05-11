@@ -7,11 +7,11 @@ if(process.env.JAWSDB_URL){
 } else{
   // Develoment Database Configuration
   config = {
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "jesus1st",
-    database: "burger_db"
+    host: process.env.MYSQL_HOST_DEVELOPMENT,
+    port: process.env.MYSQL_PORT_DEVELOPMENT,
+    user: process.env.MYSQL_USER_DEVELOPMENT,
+    password: process.env.MYSQL_PASSWORD_DEVELOPMENT,
+    database: process.env.MYSQL_DATABASE_DEVELOPMENT
   }
 }
 
