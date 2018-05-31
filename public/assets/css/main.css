@@ -2,11 +2,7 @@
   max-height: 150px;
   margin: 0 auto;
 }
-li > button{
-  float: right;
-  margin-left: 3px;
-}
-li > img{
+li img{
   margin-right: 5px;
   height: 16px;
 }
